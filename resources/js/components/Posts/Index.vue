@@ -11,9 +11,13 @@
     </div>
     <h1>Посты</h1>
     <div class="w-25 mt-3" v-if="posts">
-        <router-link :to="{name:'show',params:{id:posts.id}}"><h2>{{ posts.title }}</h2></router-link>
-        <div v-for="image in posts.images">
-            <img class="w-50" :src="image.preview_url" alt="">
+        <div v-for="post in posts">
+            <router-link :to="{ name: 'show', params: { id: post.id } }">
+                <h2>{{ post.title }}</h2>
+            </router-link>
+            <div v-for="image in post.images">
+                <img class="w-50" :src="image.preview_url" alt="">
+            </div>
         </div>
     </div>
 </template>

@@ -24,4 +24,5 @@ Route::group(['prefix' => 'posts', 'namespace' => 'Post'], function(){
     Route::get('/get','IndexController');
     Route::post('/','StoreController');
     Route::get('/get/{post}','ShowController');
+    Route::patch('/{post}','UpdateController');
 });

@@ -8,6 +8,10 @@ const routes = [
     {
         path: '/:id', component: () => import('./components/Posts/Show.vue'),
         name: 'show'
+    },
+    {
+        path: '/edit/:id', component: () => import('./components/Posts/Edit.vue'),
+        name: 'edit'
     }
 ]
 

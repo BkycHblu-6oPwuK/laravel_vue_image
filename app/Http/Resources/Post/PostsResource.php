@@ -6,7 +6,7 @@ use App\Http\Resources\Images\ImagesResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class PostResource extends JsonResource
+class PostsResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,11 +15,11 @@ class PostResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return [
-            'id' => $this->id,
-            'title' => $this->title,
-            'content' => $this->content,
-            'images' => ImagesResource::collection($this->images)
-        ];
+        $data = [];
+        foreach($this->resource as $key => $post){
+            $data[] = $post;
+            $data[$key]['images'] = ImagesResource::collection($post->images);
+        };
+        return $data;
     }
 }
